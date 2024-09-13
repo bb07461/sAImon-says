@@ -1,0 +1,23 @@
+{
+  "name": "saimon-says",
+  "version": "1.0.0",
+  "description": "AI Simon says game capstone project",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SawyerNic/sAImon-says.git"
+  },
+  "author": "Sawyer Nicastro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SawyerNic/sAImon-says/issues"
+  },
+  "homepage": "https://github.com/SawyerNic/sAImon-says#readme",
+  "dependencies": {
+    "serialport": "^12.0.0"
+  }
+}
