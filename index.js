@@ -29,11 +29,23 @@ server.listen(3000, '127.0.0.1', () => {
 });
 
 const port = new SerialPort({ path: 'COM3', baudRate: 9600 });
-const parser = port.pipe(new ReadlineParser({ delimiter: '\r\n'}));
+const parser = port.pipe(new ReadlineParser({ delimiter: '\n'}));
 
+let gameMap = {
+    "start pressed":"start",
+    "left button pressed": "press the left button",
+    "right button pressed": "press the right button",
+    "stick right": "flick stick right",
+    "stick left": "flick stick left",
+    "stick up": "flick stick up",
+    "stick down": "flick stick down",
+};
+
+let currentAction;
 // Log data received from Arduino
-port.on('data', (data) => {
+parser.on('data', (data) => {
     console.log(`Received from Arduino: ${data}`);
+    currentAction = gameMap[data];
 });
 
 // Send data to Arduino
