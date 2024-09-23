@@ -28,21 +28,21 @@ server.listen(3000, '127.0.0.1', () => {
     console.log('Listening on 127.0.0.1:3000');
 });
 
-const port = new SerialPort({ path: '/dev/ttyUSB0', baudRate: 9600 });
+const port = new SerialPort({ path: 'COM3', baudRate: 9600 });
 const parser = port.pipe(new ReadlineParser({ delimiter: '\r\n'}));
 
 // Log data received from Arduino
-parser.on('data', (data) => {
+port.on('data', (data) => {
     console.log(`Received from Arduino: ${data}`);
 });
 
 // Send data to Arduino
-port.write('Hello Arduino\n', (err) => {
-    if (err) {
-        return console.log('Error on write: ', err.message);
-    }
-    console.log('Message sent to Arduino');
-})
+// port.write('Hello Arduino\n', (err) => {
+//     if (err) {
+//         return console.log('Error on write: ', err.message);
+//     }
+//     console.log('Message sent to Arduino');
+// })
 
 port.on('error', (err) => {
     console.log('Serial port error: ', err.message);
